@@ -1,0 +1,12 @@
+.collection-list {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+  min-width: 80vw;
+
+  border: 1px dashed white;
+
+  background-color: #1c2537;
+}
