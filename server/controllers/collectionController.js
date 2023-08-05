@@ -1,4 +1,5 @@
 const Collection = require('../models/collectionModel')
+const mongoose = require('mongoose')
 
 // Get all Collections
 const getCollections = async (req, res) => {

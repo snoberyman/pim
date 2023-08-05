@@ -1,4 +1,5 @@
 const Property = require('../models/propertyModel')
+const mongoose = require('mongoose')
 
 // Get all Propertys
 const getProperties = async (req, res) => {
