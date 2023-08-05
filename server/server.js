@@ -2,7 +2,10 @@ require('dotenv').config()
 const express = require('express');
 const collectionRoutes = require('./routes/collections')
 const userRoutes = require('./routes/users')
+const itemRoutes = require('./routes/items')
+const propertyRoutes = require('./routes/properties')
 const mongoose = require('mongoose')
+
 // Express app
 const app = express()
 
@@ -16,6 +19,9 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/collections', collectionRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/items', itemRoutes);
+app.use('/api/properties', propertyRoutes);
+
 
 // Connect to DB
 mongoose.connect(process.env.MONGO_URI)

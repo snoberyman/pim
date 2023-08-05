@@ -1,5 +1,5 @@
 const express = require('express')
-
+const Collection = require('../models/CollectionModel')
 const router = express.Router()
 
 // GET all Collections
@@ -13,8 +13,15 @@ router.get('/:id', (req, res) => {
 })
 
 // POST a single Collection
-router.post('/', (req, res) => {
-	res.json({ messg: 'POST a single Collection' })
+router.post('/', async (req, res) => {
+	const { title, description, createdBy } = req.body
+
+	try {
+		const collection = await Collection.create({ title, description, createdBy });
+		res.status(200).json(collection)
+	} catch (e) {
+		res.status(400).json({ error: e.message });
+	}
 })
 
 // DELETE a single Collection
