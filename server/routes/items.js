@@ -1,39 +1,28 @@
 const express = require('express')
-const Item = require('../models/ItemModel')
+
+const {
+	createItem,
+	getItem,
+	getItems,
+	deleteItem,
+	updateItem
+} = require('../controllers/itemController')
 
 const router = express.Router()
 
 // GET all Items
-router.get('/', (req, res) => {
-    res.json({ messg: 'GET all Items' })
-})
+router.get('/', getItems)
 
 // GET a single Item
-router.get('/:id', (req, res) => {
-    res.json({ messg: 'GET a single Item' })
-})
+router.get('/:id', getItem)
 
 // POST a single Item
-router.post('/', async (req, res) => {
-
-    const { name, collectionRef, properties } = req.body
-
-    try {
-        const item = await Item.create({ name, collectionRef, properties });
-        res.status(200).json(item)
-    } catch (e) {
-        res.status(400).json({ error: e.message });
-    }
-})
+router.post('/', createItem)
 
 // DELETE a single Item
-router.delete('/:id', (req, res) => {
-    res.json({ messg: 'DELETE a single Item' })
-})
+router.delete('/:id', deleteItem)
 
 // UPDATE a single Item
-router.patch('/:id', (req, res) => {
-    res.json({ messg: 'UPDATE a single Item' })
-})
+router.patch('/:id', updateItem)
 
 module.exports = router
